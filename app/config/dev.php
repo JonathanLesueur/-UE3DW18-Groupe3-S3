@@ -6,9 +6,9 @@ $app['db.options'] = array(
     'charset'  => 'utf8',
     'host'     => 'localhost',  
     'port'     => '3306',
-    'dbname'   => 'CHANGE HERE YOUR DB NAME',
-    'user'     => 'CHANGE HERE YOUR USER',
-    'password' => 'CHANGE HERE YOUR PASSWORD'
+    'dbname'   => 'docker',
+    'user'     => 'docker',
+    'password' => '3dw182020g3'
 );
 
 // enable the debug mode
