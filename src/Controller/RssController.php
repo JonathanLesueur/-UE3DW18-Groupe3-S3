@@ -24,7 +24,7 @@ class RssController {
             $_links[] = $this->buildLinkArray($link);
         }
         
-        return $app['twig']->render('rss_link.html.twig', array('links' => $_links));
+        return $app['twig']->render('rss_links.html.twig', array('links' => $_links));
     }
 
 
@@ -44,27 +44,4 @@ class RssController {
         );
         return $data;
     }
-
-
-    /**
-     * Converts an Link object into an associative array for JSON encoding
-     *
-     * @param Link $link Link object
-     *
-     * @return array Associative array whose fields are the link properties.
-     */
-    private function buildLinkArray(Link $link) {
-        $data  = array(
-            'id' => $link->getId(),
-            'lien_titre' => $link->getTitle(),
-            'lien_url' => $link->getUrl(),
-            'lien_desc' => $link->getDesc(),
-        );
-        return $data;
-    }
-
-
-
-
-
 }

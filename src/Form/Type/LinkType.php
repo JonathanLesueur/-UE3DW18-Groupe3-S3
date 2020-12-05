@@ -2,11 +2,10 @@
 
 namespace Watson\Form\Type;
 
-
-
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
+
+
 class LinkType extends AbstractType
 {
 
@@ -17,11 +16,10 @@ class LinkType extends AbstractType
         $builder
             ->add('title', 'text')
             ->add('url', 'text')
-            ->add('desc', 'textarea')
+            ->add('desc', 'text')
             ->add('tags', 'text');
 
-        
-        
+    
     }
 
     public function getName()
