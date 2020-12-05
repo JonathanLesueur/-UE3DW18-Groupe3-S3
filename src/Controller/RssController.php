@@ -4,6 +4,7 @@ namespace Watson\Controller;
 
 use Silex\Application;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Watson\Domain\Link;
 
 class RssController {
@@ -18,13 +19,17 @@ class RssController {
      */
     public function getLinksAction($limit, Application $app) {
         $links = $app['dao.link']->findByLimit($limit);
-        // Convert an array of objects ($links) into an array of associative arrays ($responseData)
+        // Convert an array of objects ($links) into an array of associative arrays ($_links)
         $_links = array();
         foreach ($links as $link) {
             $_links[] = $this->buildLinkArray($link);
         }
-        
-        return $app['twig']->render('rss_links.html.twig', array('links' => $_links));
+
+        // Return a response to indicate XML header
+        $response = new Response($app['twig']->render('rss_links.html.twig', array('links' => $_links)));
+        $response->headers->set('Content-Type', 'text/xml');
+
+        return $response;
     }
 
 

@@ -46,4 +46,4 @@ $app->post('/api/link', "Watson\Controller\ApiController::addLinkAction")->bind(
 $app->delete('/api/link/{id}', "Watson\Controller\ApiController::deleteLinkAction")->bind('api_link_delete');
 
 // RSS
-$app->get('/rss/link/{limit}', "Watson\Controller\RssController::getLinksAction")->bind('rss_link');
+$app->get('/rss/links/{limit}', "Watson\Controller\RssController::getLinksAction")->bind('rss_link');
