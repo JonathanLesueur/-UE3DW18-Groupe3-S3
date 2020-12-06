@@ -56,10 +56,13 @@ class LinkDAO extends DAO
             SELECT *
             FROM tl_liens
             ORDER BY lien_id DESC
-            LIMIT {$limit}
+            LIMIT :limit
         ";
 
-        $result = $this->getDb()->fetchAll($sql);
+        $query = $this->getDb()->prepare($sql);
+        $query->bindValue('limit', $limit, \PDO::PARAM_INT);
+        $query->execute();
+        $result = $query->fetchAll();
 
         $_links = array();
         foreach($result as $row) {
