@@ -6,8 +6,8 @@ $app['db.options'] = array(
     'charset'  => 'utf8',
     'host'     => 'localhost',  
     'port'     => '3306',
-    'dbname'   => 'docker',
-    'user'     => 'docker',
+    'dbname'   => 'watson-3dw18-g3',
+    'user'     => 'watson-3dw18-g3',
     'password' => '3dw182020g3'
 );
 
