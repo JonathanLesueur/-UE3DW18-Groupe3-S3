@@ -3,7 +3,7 @@
 {% block title %}Résultat(s) pour "{{ tag.title }}" {% endblock %}
 
 {% block content %}
-	<div class="row">
+	<div class="row tag">
 		<h1>Résultat(s) associé(s) au tag "{{ tag.title }}"</h1>
 		{% if links|length <= 0 %}
 			<p>
@@ -11,17 +11,22 @@
 			</p>
 		{% else %}
 			{% for link in links %}
-				<div class="col-md-4">
-				    <h2><a class="linkTitle" href="{{ path('link', { 'id': link.id }) }}">{{ link.title }}</a></h2>
-				    <p>{{ link.desc }}</p>
-				    <a href="{{ link.url }}" title="" target="_blank">Open ></a>
-				    <em>(by {{ link.user.username }})</em>
-				    {% for tag in link.tags %}
-				    	<a href="{{ path('tag', { 'id': tag.id }) }}" title="Filtrer">
-				    		{{ tag.title }}
-				    	</a>
-				    {% endfor %}
-				</div>
+                <div class="col-md-4">
+                    <div class="link-container">
+                        <h2><a class="linkTitle" href="{{ path('link', { 'id': link.id }) }}">{{ link.title }}</a></h2>
+                        <p>{{ link.desc }} <em>(by {{ link.user.username }})</em></p>
+
+                        <div class="link-tags">
+                            {% for tag in link.tags %}
+                                <a href="{{ path('tag', { 'id': tag.id }) }}" title="Filtrer">
+                                    {{ tag.title }}
+                                </a>
+                            {% endfor %}
+                        </div>
+                        
+                        <a href="{{ link.url }}" title="" class="watson-button" target="_blank">Open</a>
+                    </div>
+                </div>
 			{% endfor %}
 		{% endif %}
 	</div>
